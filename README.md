@@ -22,3 +22,16 @@ jot down a note or create a diagram for myself during my studies, but I do not w
 it by hand. I believe that having an application like this at one's disposal allows for an easier time when working and 
 studying. 
 
+## User Stories
+
+- As a user, I want to be able to draw on my sketch pad
+- As a user, I want to be able to save my work
+- As a user, I want to be able to remove previously drawn items from my sketchpad
+- As a user, I want to be able to delete my drawing after I am done with it.
+- As a user, I want to be able to select different writing and drawing utensils
+
+
+
+
+
+
