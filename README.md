@@ -1,4 +1,4 @@
-# My Personal Project
+# Xiang Xi's CPSC 210 Personal Project
 
 ## Online Sketching Tool
 
@@ -24,11 +24,10 @@ studying.
 
 ## User Stories
 
-- As a user, I want to be able to draw on my sketch pad
-- As a user, I want to be able to save my work
-- As a user, I want to be able to remove previously drawn items from my sketchpad
-- As a user, I want to be able to delete my drawing after I am done with it.
-- As a user, I want to be able to select different writing and drawing utensils
+- As a user, I want to be able to add a pixel to the canvas
+- As a user, I want to be able to change the color of my pencil
+- As a user, I want to be able to change the size of my pencil
+- As a user, I want to be able to change the color of my pixel
 
 
 
