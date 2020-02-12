@@ -2,19 +2,18 @@ package model;
 
 import ui.tools.Tool;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Canvas {
     private Pixel[][] bitmap;
-    int x = 1920;
-    int y = 1080;
+    int xpos = 1920;
+    int ypos = 1080;
 
 
     public Canvas() {
-        bitmap = new Pixel[x][y];
-        for (int row = 0; row < x; row++) {
-            for (int col = 0; col < y; col++) {
+        bitmap = new Pixel[xpos][ypos];
+        for (int row = 0; row < xpos; row++) {
+            for (int col = 0; col < ypos; col++) {
                 bitmap[row][col] = new Pixel(Color.white);
             }
         }
@@ -39,7 +38,7 @@ public class Canvas {
     }
 
     public int getSize() {
-        return x * y;
+        return xpos * ypos;
     }
 
 }

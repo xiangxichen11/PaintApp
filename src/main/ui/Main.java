@@ -10,6 +10,7 @@ import java.awt.*;
 public class Main {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
+
     public static void main(String[] args) {
         Canvas canvas = new Canvas();
         PencilTool pencil = new PencilTool();
@@ -26,7 +27,7 @@ public class Main {
                 if (row != 0 || col != 0) {
                     System.out.print("o");
                 } else {
-                    System.out.print(ANSI_YELLOW +  ". " + ANSI_RESET);
+                    System.out.print(ANSI_YELLOW + ". " + ANSI_RESET);
                 }
             }
             System.out.println(" ");
