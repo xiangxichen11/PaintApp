@@ -1,7 +1,6 @@
 import model.Pixel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.awt.*;
 
