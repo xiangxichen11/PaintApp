@@ -1,5 +1,6 @@
 package ui.tools;
 // An abstract class that contains the main methods for all tools that will eventually be implemented.
+
 public abstract class Tool {
     public String description;
     public boolean toolActive;

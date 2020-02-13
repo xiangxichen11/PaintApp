@@ -56,10 +56,11 @@ public class PaintApp {
     //MODIFIES: this
     //EFFECTS: runs user command
     private void continueCommand(String command) {
+        // Since the canvas is currently taking in a coordinate, it will always return with a
+        // dot if the coordinates are within the bound. Thus, I have set the coordinate to
+        // (-1, -1) so that it prints a blank canvas at the start.
         if (command.equals("oc")) {
-            printCanvas(-1, -1); // Since the canvas is currently taking in a coordinate, it will always return with a dot
-                                                        // if the coordinates are within the bound. Thus, I have set the coordinate to (-1, -1)
-                                                        // so that it prints a blank canvas at the start.
+            printCanvas(-1, -1);
         } else if (command.equals("pc")) {
             pencilColor();
         } else if (command.equals("ps")) {
