@@ -10,7 +10,7 @@ public abstract class Tool {
         toolActive = false;
         size = 0;
     }
-
+    
     public boolean isToolActive() {
         return toolActive;
     }
