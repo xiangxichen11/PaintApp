@@ -2,6 +2,7 @@ package ui.tools;
 
 import java.awt.*;
 
+//A pencil tool that will eventually allow the user to free hand draw in the ui.
 public class PencilTool extends Tool {
     private static Color color;
     private int size;

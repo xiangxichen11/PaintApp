@@ -2,6 +2,7 @@ package model;
 
 import java.awt.*;
 
+//A pixel on a canvas. Currently it only has color
 public class Pixel {
     private Color color;
 

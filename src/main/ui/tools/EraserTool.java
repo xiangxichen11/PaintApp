@@ -1,5 +1,6 @@
 package ui.tools;
 
+// eraser tool that will eventually allow the user to erase in the ui.
 public class EraserTool extends Tool {
     private int size;
 
