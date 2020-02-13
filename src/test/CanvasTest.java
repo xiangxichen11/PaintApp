@@ -35,8 +35,10 @@ public class CanvasTest {
 
     @Test
     void testDraw(){
+        assertEquals("pencil", pencil.description);
         canvas.draw(pencil, 100, 100);
         assertEquals(Color.black, canvas.getPixel(100, 100).getPixelColor());
+        assertEquals("eraser", eraser.description);
         canvas.draw(eraser,100,100);
         assertEquals(Color.white, canvas.getPixel(100,100).getPixelColor());
     }
