@@ -11,10 +11,12 @@ import java.util.Scanner;
 
 public class PaintApp {
     private Scanner input;
+    private Canvas canvas;
 
 
     //EFFECTS: runs the paint application
     public PaintApp() {
+        canvas = new Canvas();
         runPaintApp();
     }
 
@@ -60,7 +62,7 @@ public class PaintApp {
         // dot if the coordinates are within the bound. Thus, I have set the coordinate to
         // (-1, -1) so that it prints a blank canvas at the start.
         if (command.equals("oc")) {
-            printCanvas(-1, -1);
+            printCanvas();
         } else if (command.equals("pc")) {
             pencilColor();
         } else if (command.equals("ps")) {
@@ -77,16 +79,16 @@ public class PaintApp {
     }
 
     //EFFECTS: prints a canvas in console
-    private void printCanvas(int x, int y) {
+    private void printCanvas() {
         for (int row = 0; row < 10; row++) {
             for (int col = 0; col < 10; col++) {
-                if (!(row == x && col == y)) {
-                    System.out.print("o");
+                if (canvas.getBitmap()[row][col].getPixelColor().equals(Color.white)) {
+                    System.out.print(" - ");
                 } else {
-                    System.out.print(".");
+                    System.out.print(" o ");
                 }
             }
-            System.out.println("o");
+            System.out.println(" ");
         }
     }
 
@@ -94,9 +96,11 @@ public class PaintApp {
     //EFFECTS; sets color of pencil based on user
     private void pencilColor() {
         PencilTool pencil = new PencilTool();
-        System.out.println("Enter color: ");
+        System.out.println(pencil.getColor());
+        System.out.println("Enter color:");
         String color = input.next();
-        pencil.setColor(Color.getColor(color)); // I currently cannot print out the color of the pencil without graphics
+        pencil.setColor(color);
+        System.out.println(pencil.getColor());
         System.out.println("The color of your pencil is now: " + color);
 
     }
@@ -111,8 +115,8 @@ public class PaintApp {
         if (amount < 0) {
             System.out.println("Unable to process negative number");
         } else {
-            pencil.setSize(amount); //Cannot show actual eraser size as no graphics have been implemented
-            System.out.println("Your pencil size is " + amount);
+            pencil.setSize(amount);
+            System.out.println(pencil.getSize());
         }
     }
 
@@ -126,8 +130,8 @@ public class PaintApp {
         if (amount < 0) {
             System.out.println("Unable to process negative number");
         } else {
-            eraser.setSize(amount); //Cannot show actual eraser size as no graphics have been implemendes
-            System.out.println("Your eraser size is " + amount);
+            eraser.setSize(amount);
+            System.out.println(eraser.getSize());
         }
     }
 
@@ -135,37 +139,28 @@ public class PaintApp {
     //                  Currently, both the eraser and pencil produce the same color dot as you
     //                   cannot specifically change the console text color using variables.
     private void useEraser() {
-        Canvas canvas = new Canvas();
+        EraserTool eraser = new EraserTool();
         System.out.println("Enter x coordinate value: ");
         int xpos = input.nextInt();
         System.out.println("Enter y coordinate value: ");
         int ypos = input.nextInt();
 
-        if (xpos < 0 || ypos < 0) {
-            System.out.println("Unable to process negative number");
-        } else {
-            canvas.getPixel(xpos, ypos);// These will currently only open a java window but nothing will happen
-                                                        //   because graphics has not been implemented yet.
-            printCanvas(xpos, ypos);
-        }
+        canvas.draw(eraser, xpos, ypos);
     }
+
 
     //EFFECTS; prints out a point on the canvas that the user has used the pencil on
     //                  Currently, both the eraser and pencil produce the same color dot as you
     //                   cannot specifically change the console text color using variables.
     private void usePencil() {
-        Canvas canvas = new Canvas();
+        PencilTool pencil = new PencilTool();
         System.out.println("Enter x coordinate value: ");
         int xpos = input.nextInt();
         System.out.println("Enter y coordinate value: ");
         int ypos = input.nextInt();
 
-        if (xpos < 0 || ypos < 0) {
-            System.out.println("Unable to process negative number");
-        } else {
-            canvas.getPixel(xpos, ypos);// These will currently only open a java window but nothing will happen
-                                                        //   because graphics has not been implemented yet.
-            printCanvas(xpos, ypos);
-        }
+        canvas.draw(pencil, xpos, ypos);
+
     }
 }
+

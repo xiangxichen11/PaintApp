@@ -1,5 +1,7 @@
 package model;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import org.json.simple.JSONObject;
 import ui.tools.Tool;
 
 import java.awt.*;
@@ -33,6 +35,10 @@ public class Canvas {
         }
     }
 
+    public Pixel[][] getBitmap() {
+        return bitmap;
+    }
+
     public Pixel getPixel(int x, int y) {
         return bitmap[x][y];
     }
@@ -40,6 +46,14 @@ public class Canvas {
     public int getSize() {
         return xpos * ypos;
     }
+
+    public JSONObject export() {
+        JSONObject obj = new JSONObject();
+        obj.put("bitmap", bitmap);
+        System.out.println(obj.toJSONString());
+        return obj;
+    }
+
 
 }
 

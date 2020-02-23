@@ -1,5 +1,7 @@
 package ui.tools;
 
+import netscape.javascript.JSObject;
+
 import java.awt.*;
 
 //A pencil tool that will eventually allow the user to free hand draw in the ui.
@@ -11,8 +13,8 @@ public class PencilTool extends Tool {
         description = "pencil";
     }
 
-    public void setColor(Color c) {
-        color = c;
+    public void setColor(String c) {
+        color = Color.decode(c);
     }
 
     public Color getColor() {
