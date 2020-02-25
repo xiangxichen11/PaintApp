@@ -28,23 +28,39 @@ public class CanvasTest {
     void testConstructor(){
         Canvas newPixel = new Canvas();
         assertEquals(Color.white, canvas.getPixel(0,0).getPixelColor());
-        assertEquals(Color.white, canvas.getPixel(343,183).getPixelColor());
-        assertEquals(1920*1080, canvas.getSize());
+        assertEquals(Color.white, canvas.getPixel(2,2).getPixelColor());
+        assertEquals(11*11, canvas.getSize());
     }
 
 
     @Test
     void testPencilDraw(){
-        canvas.draw(pencil, 100, 100);
-        assertEquals(Color.black, canvas.getPixel(100, 100).getPixelColor());
-        canvas.draw(eraser,100,100);
-        assertEquals(Color.white, canvas.getPixel(100,100).getPixelColor());
+        canvas.draw(pencil, 10, 10);
+        assertEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
+        canvas.draw(eraser,10,10);
+        assertEquals(Color.white, canvas.getPixel(10,10).getPixelColor());
     }
 
     @Test
     void testEraserDraw(){
         canvas.draw(eraser, 10, 10);
-        assertEquals(Color.white,  canvas.getPixel(100, 100).getPixelColor());
+        assertEquals(Color.white,  canvas.getPixel(10, 10).getPixelColor());
+    }
+
+    @Test
+    void testGetBitmap(){
+        canvas.getBitmap()[0][0].setColor(Color.blue);
+
+        assertEquals(Color.blue, canvas.getBitmap()[0][0].getPixelColor());
+    }
+
+    @Test
+    void testExport(){
+        Canvas canvas2 = new Canvas();
+        canvas2.export().toString();
+        canvas.export().toString();
+
+        assertEquals(canvas2.export().toString(), canvas.export().toString());
     }
 
 }

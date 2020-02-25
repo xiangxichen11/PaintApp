@@ -33,7 +33,7 @@ public class ToolTest {
     
     @Test
     void testPencilColor(){
-        pencil.setColor("black");
+        pencil.setColor(Color.black);
 
         assertEquals(Color.black, pencil.getColor());
     }

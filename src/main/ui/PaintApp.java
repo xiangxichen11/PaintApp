@@ -1,15 +1,23 @@
 package ui;
 
 import model.Canvas;
+import model.Pixel;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import persistence.Reader;
+import persistence.Writer;
 import ui.tools.EraserTool;
 import ui.tools.PencilTool;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 //class that demonstrates what the program is capable of doing.
 
 public class PaintApp {
+    private static final String PAINT_FILE = "./data/bigDaddy.JSON";
     private Scanner input;
     private Canvas canvas;
 
@@ -52,15 +60,14 @@ public class PaintApp {
         System.out.println("es -> Select Eraser Size");
         System.out.println("up -> Use Pencil");
         System.out.println("ue -> Use Eraser");
+        System.out.println("s -> Save");
+        System.out.println("l -> Load");
         System.out.println("q -> Quit Application");
     }
 
     //MODIFIES: this
     //EFFECTS: runs user command
     private void continueCommand(String command) {
-        // Since the canvas is currently taking in a coordinate, it will always return with a
-        // dot if the coordinates are within the bound. Thus, I have set the coordinate to
-        // (-1, -1) so that it prints a blank canvas at the start.
         if (command.equals("oc")) {
             printCanvas();
         } else if (command.equals("pc")) {
@@ -73,6 +80,10 @@ public class PaintApp {
             usePencil();
         } else if (command.equals("ue")) {
             useEraser();
+        } else if (command.equals("s")) {
+            savePaint();
+        } else if (command.equals("l")) {
+            loadPaint();
         } else {
             System.out.println("Unable to process");
         }
@@ -90,17 +101,14 @@ public class PaintApp {
             }
             System.out.println(" ");
         }
+        System.out.println(canvas.export());
     }
 
     //MODIFIES: this
     //EFFECTS; sets color of pencil based on user
     private void pencilColor() {
-        PencilTool pencil = new PencilTool();
-        System.out.println(pencil.getColor());
         System.out.println("Enter color:");
         String color = input.next();
-        pencil.setColor(color);
-        System.out.println(pencil.getColor());
         System.out.println("The color of your pencil is now: " + color);
 
     }
@@ -160,7 +168,37 @@ public class PaintApp {
         int ypos = input.nextInt();
 
         canvas.draw(pencil, xpos, ypos);
+    }
 
+    public void savePaint() {
+        try {
+            Writer writer = new Writer(new File(PAINT_FILE));
+            writer.write(canvas.export());
+            writer.closeWriter();
+            System.out.println("Accounts saved to file " + PAINT_FILE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadPaint() {
+        try {
+            JSONObject object = Reader.readObject(new File(PAINT_FILE));
+            for (int row = 0; row < 10; row++) {
+                for (int col = 0; col < 10; col++) {
+                    Pixel pixel = new Pixel(Color.white);
+                    canvas.getBitmap()[row][col] = pixel;
+                    Color color = new Color(Integer.parseInt(((String) ((JSONObject) object.get(row)).get(col))));
+                    pixel.setColor(color);
+                }
+            }
+
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -13,8 +13,8 @@ public class PencilTool extends Tool {
         description = "pencil";
     }
 
-    public void setColor(String c) {
-        color = Color.decode(c);
+    public void setColor(Color c) {
+        color = c;
     }
 
     public Color getColor() {

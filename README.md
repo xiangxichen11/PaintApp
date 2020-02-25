@@ -28,8 +28,8 @@ studying.
 - As a user, I want to be able to change the color of my pencil
 - As a user, I want to be able to change the size of my pencil
 - As a user, I want to be able to change the color of my pixel
-- As a user, I want to be able to save the pixel that I have added to the Canvas
-- As a user, I want to be able to remove the pixel that I have added to the Canvas
+- As a user, I want to be able to save the canvas that I have added to the Canvas
+- As a user, I want to be able to load the pixel that I have added to the Canvas
 
 
 
