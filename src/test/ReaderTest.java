@@ -2,6 +2,7 @@ import model.Canvas;
 import model.Pixel;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistence.Reader;
 
@@ -14,9 +15,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ReaderTest {
     private static final String TEST_FILE = "./data/bigDaddy.JSON";
     private Canvas canvas;
+    private Reader reader;
+
+    @BeforeEach
+    void runBefore(){
+        canvas = new Canvas();
+        reader = new Reader();
+    }
+
     @Test
     void testReadObject(){
-        canvas = new Canvas();
         try{
             JSONObject object = Reader.readObject(new File(TEST_FILE));
             for (int row = 0; row < 10; row++) {

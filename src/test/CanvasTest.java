@@ -25,7 +25,6 @@ public class CanvasTest {
     }
     @Test
     void testConstructor(){
-        Canvas newPixel = new Canvas();
         assertEquals(Color.white, canvas.getPixel(0,0).getPixelColor());
         assertEquals(Color.white, canvas.getPixel(2,2).getPixelColor());
         assertEquals(11*11, canvas.getSize());
@@ -47,6 +46,13 @@ public class CanvasTest {
         assertEquals("eraser", eraser.description);
         canvas.draw(eraser, 10, 10);
         assertEquals(Color.white,  canvas.getPixel(10, 10).getPixelColor());
+    }
+
+    @Test
+    void testDrawNotPencilOrEraser(){
+        eraser.description = "pen";
+        canvas.draw(eraser, 10, 10);
+        assertNotEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
     }
 
     @Test
