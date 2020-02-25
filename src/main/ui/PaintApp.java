@@ -169,7 +169,7 @@ public class PaintApp {
 
         canvas.draw(pencil, xpos, ypos);
     }
-
+    //EFFECTS: saves the account to file
     public void savePaint() {
         try {
             Writer writer = new Writer(new File(PAINT_FILE));
@@ -180,7 +180,8 @@ public class PaintApp {
             e.printStackTrace();
         }
     }
-
+    // MODIFIES: this
+    // EFFECTS: loads accounts from PAINT_FILE if the file exists
     public void loadPaint() {
         try {
             JSONObject object = Reader.readObject(new File(PAINT_FILE));

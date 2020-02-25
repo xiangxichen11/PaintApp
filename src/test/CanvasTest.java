@@ -1,5 +1,4 @@
 import model.Canvas;
-import model.Pixel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ui.tools.EraserTool;

@@ -2,10 +2,8 @@ import model.Canvas;
 import model.Pixel;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistence.Reader;
-import persistence.Writer;
 
 import java.awt.*;
 import java.io.File;

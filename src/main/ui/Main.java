@@ -1,6 +1,5 @@
 package ui;
 
-import model.Canvas;
 
 // Runs the program
 public class Main {

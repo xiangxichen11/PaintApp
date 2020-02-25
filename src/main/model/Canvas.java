@@ -1,12 +1,9 @@
 package model;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import ui.tools.Tool;
 
 import java.awt.*;
-import java.io.FileWriter;
 
 // A 2D array that is a canvas for the paint board. Currently, whenever a new Canvas is called, it will bring up a java
 // window that is suppose to represent the board. However, without the implementation of graphics, the window will
@@ -49,6 +46,7 @@ public class Canvas {
         return xpos * ypos;
     }
 
+    //EFFECTS: exports bitmap into a JSONObject and returns it into a JSONString
     public String export() {
         JSONObject newBitmap = new JSONObject();
         for (int row = 0; row < xpos; row++) {
