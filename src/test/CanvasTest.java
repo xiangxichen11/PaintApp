@@ -42,7 +42,9 @@ public class CanvasTest {
 
     @Test
     void testEraserDraw(){
+        assertNotEquals("pencil", eraser.description);
         assertNotEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
+        assertEquals("eraser", eraser.description);
         canvas.draw(eraser, 10, 10);
         assertEquals(Color.white,  canvas.getPixel(10, 10).getPixelColor());
     }
