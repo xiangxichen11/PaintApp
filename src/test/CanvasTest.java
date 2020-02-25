@@ -7,7 +7,7 @@ import ui.tools.Tool;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CanvasTest {
@@ -42,6 +42,7 @@ public class CanvasTest {
 
     @Test
     void testEraserDraw(){
+        assertNotEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
         canvas.draw(eraser, 10, 10);
         assertEquals(Color.white,  canvas.getPixel(10, 10).getPixelColor());
     }
