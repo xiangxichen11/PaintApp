@@ -6,6 +6,6 @@ import model.Canvas;
 public class Main {
 
     public static void main(String[] args) {
-      new PaintApp();
+        new PaintApp();
     }
 }

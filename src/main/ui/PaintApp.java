@@ -185,14 +185,15 @@ public class PaintApp {
         try {
             JSONObject object = Reader.readObject(new File(PAINT_FILE));
             for (int row = 0; row < 10; row++) {
+                JSONObject rowObj = (JSONObject) object.get(String.valueOf(row));
                 for (int col = 0; col < 10; col++) {
                     Pixel pixel = new Pixel(Color.white);
                     canvas.getBitmap()[row][col] = pixel;
-                    Color color = new Color(Integer.parseInt(((String) ((JSONObject) object.get(row)).get(col))));
+                    Long rgb =  (Long) rowObj.get(String.valueOf(col));
+                    Color color = new Color(rgb.intValue());
                     pixel.setColor(color);
                 }
             }
-
 
         } catch (ParseException e) {
             e.printStackTrace();
