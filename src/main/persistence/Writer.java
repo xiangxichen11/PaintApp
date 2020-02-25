@@ -4,6 +4,7 @@ package persistence;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 // A writer that can write a paint file
 public class Writer {
     private FileWriter fileWriter;
@@ -12,11 +13,13 @@ public class Writer {
     public Writer(File file) throws IOException {
         fileWriter = new FileWriter(file);
     }
+
     //MODIFIES: this
     //EFFECTS: writes the file that is about to be saved
     public void write(String string) throws IOException {
         fileWriter.write(string);
     }
+
     //MODIFIES: this
     //EFFECTS: closes the writer
     public void closeWriter() throws IOException {

@@ -169,6 +169,7 @@ public class PaintApp {
 
         canvas.draw(pencil, xpos, ypos);
     }
+
     //EFFECTS: saves the account to file
     public void savePaint() {
         try {
@@ -180,6 +181,7 @@ public class PaintApp {
             e.printStackTrace();
         }
     }
+
     // MODIFIES: this
     // EFFECTS: loads accounts from PAINT_FILE if the file exists
     public void loadPaint() {
@@ -190,7 +192,7 @@ public class PaintApp {
                 for (int col = 0; col < 10; col++) {
                     Pixel pixel = new Pixel(Color.white);
                     canvas.getBitmap()[row][col] = pixel;
-                    Long rgb =  (Long) rowObj.get(String.valueOf(col));
+                    Long rgb = (Long) rowObj.get(String.valueOf(col));
                     Color color = new Color(rgb.intValue());
                     pixel.setColor(color);
                 }

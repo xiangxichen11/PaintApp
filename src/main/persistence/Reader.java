@@ -17,6 +17,7 @@ public class Reader {
         JSONObject jsonObject = (JSONObject) readFile(file);
         return jsonObject;
     }
+
     //EFFECTS: returns object that has been read by JSONParser
     public static Object readFile(File file) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
