@@ -1,7 +1,9 @@
 package ui;
 
-import model.Canvas;
+//import model.Canvas;
+
 import model.Pixel;
+import model.Canvas;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import persistence.Reader;
@@ -101,7 +103,6 @@ public class PaintApp {
             }
             System.out.println(" ");
         }
-        System.out.println(canvas.export());
     }
 
     //MODIFIES: this
@@ -202,6 +203,8 @@ public class PaintApp {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            System.out.println("loaded canvas");
         }
     }
 }
