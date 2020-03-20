@@ -1,17 +1,20 @@
 package model;
 
 import org.json.simple.JSONObject;
+import ui.ToolPanel;
 import ui.tools.Tool;
 
+import javax.swing.*;
 import java.awt.*;
 
 // A 2D array that is a canvas for the paint board. Currently, whenever a new Canvas is called, it will bring up a java
 // window that is suppose to represent the board. However, without the implementation of graphics, the window will
 // provide nothing.
 public class Canvas {
-    private Pixel[][] bitmap;
-    int xpos = 11;
-    int ypos = 11;
+    public Pixel[][] bitmap;
+    public int xpos = 600;
+    public int ypos = 600;
+
 
     //EFFECTS: A 2D array that is currently blank acting like a canvas
     public Canvas() {
@@ -40,10 +43,6 @@ public class Canvas {
 
     public Pixel getPixel(int x, int y) {
         return bitmap[x][y];
-    }
-
-    public int getSize() {
-        return xpos * ypos;
     }
 
     //EFFECTS: exports bitmap into a JSONObject and returns it into a JSONString

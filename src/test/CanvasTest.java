@@ -27,7 +27,6 @@ public class CanvasTest {
     void testConstructor(){
         assertEquals(Color.white, canvas.getPixel(0,0).getPixelColor());
         assertEquals(Color.white, canvas.getPixel(2,2).getPixelColor());
-        assertEquals(11*11, canvas.getSize());
     }
 
 

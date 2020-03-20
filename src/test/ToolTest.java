@@ -30,7 +30,7 @@ public class ToolTest {
         eraser.activateTool();
         assertTrue(eraser.isToolActive());
     }
-    
+
     @Test
     void testPencilColor(){
         pencil.setColor(Color.black);
