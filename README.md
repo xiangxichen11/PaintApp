@@ -31,6 +31,27 @@ studying.
 - As a user, I want to be able to save the canvas that I have added to the Canvas
 - As a user, I want to be able to load the pixel that I have added to the Canvas
 
+## How to Run the Program
+
+**Running the program:**
+Run the PaintApp class. A window should pop up called PaintApp
+
+**Using the pencil tool:**
+To draw on the canvas using the pencil, click on the pencil button first and then draw on the canvas by clicking then 
+dragging the mouse.
+
+**Using the Eraser tool:**
+In order to use the eraser function, follow the save instructions for the pencil button but instead, press the eraser
+ button
+
+**Using the save function:** 
+When you want to save the drawing, click the save button and it will be saved to the file
+
+**Using the load function:**
+This load button will always reload the previous save. Just click the load button and whatever was previously saved 
+will appear on the screen. Any non-saved changed will be gone.
+
+
 
 
 

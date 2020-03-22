@@ -17,16 +17,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 //class that demonstrates what the program is capable of doing.
-
-public class App {
+public class ConsoleApp {
     private static final String PAINT_FILE = "./data/bigDaddy.JSON";
-    private static final String TEST_FILE = "./data/test.JSON";
     private Scanner input;
     private Canvas canvas;
 
 
     //EFFECTS: runs the paint application
-    public App() {
+    public ConsoleApp() {
         canvas = new Canvas();
         runPaintApp();
     }

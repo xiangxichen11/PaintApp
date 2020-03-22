@@ -1,10 +1,7 @@
 package model;
 
 import org.json.simple.JSONObject;
-import ui.ToolPanel;
 import ui.tools.Tool;
-
-import javax.swing.*;
 import java.awt.*;
 
 // A 2D array that is a canvas for the paint board. Currently, whenever a new Canvas is called, it will bring up a java

@@ -1,10 +1,9 @@
 package ui;
 
-import model.Canvas;
-
 import javax.swing.*;
 import java.awt.*;
 
+// class that represents the frame that the panels are put inside
 public class Frame extends JFrame {
     private static Frame frame;
     protected ToolPanel tools;
@@ -13,6 +12,9 @@ public class Frame extends JFrame {
     private Frame() {
     }
 
+    //EFFECTS; represents the constructor for the Frame due to singleton effect.
+    //                  Frame is set to a private method so whenever a frame needs to be
+    //                  instantiated, this method is called
     public static Frame getInstance() {
         if (frame == null) {
             frame = new Frame();

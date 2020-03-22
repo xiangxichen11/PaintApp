@@ -1,10 +1,7 @@
 package ui;
 
-import model.Canvas;
-import model.Pixel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import persistence.Reader;
 import persistence.Writer;
 import ui.tools.EraserTool;
@@ -18,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+// class that represents a menu bar consisting of buttons that have a specific function
 public class ToolPanel extends JPanel {
     private static final String PAINT_FILE = "./data/bigDaddy.JSON";
     public Tool activeTool;
@@ -29,34 +27,40 @@ public class ToolPanel extends JPanel {
         createLoadButton();
     }
 
+    //EFFECTS: creates a button that activates the pencil tool
     public void createPencilButton() {
         JButton button = new JButton("Pencil");
         button.addActionListener(e -> setToolActive(new PencilTool()));
         add(button);
     }
 
+    //EFFECTS: creates a button that activates the eraser tool
     public void createEraserButton() {
         JButton button = new JButton("Eraser");
         button.addActionListener(e -> setToolActive(new EraserTool()));
         add(button);
     }
 
+    //EFFECTS: creates a button that allows the canvas to be saved
     public void createSaveButton() {
         JButton button = new JButton("Save");
         button.addActionListener(e -> saveCanvas());
         add(button);
     }
 
+    //EFFECTS: creates a button that allows the canvas to be reloaded
     public void createLoadButton() {
         JButton button = new JButton("Load");
         button.addActionListener(e -> loadCanvas());
         add(button);
     }
 
+    //EFFECTS: sets the current to be the active tool
     public void setToolActive(Tool tool) {
         this.activeTool = tool;
     }
 
+    //EFFECTS: saves the button through writer in persistence.
     public void saveCanvas() {
         try {
             Writer writer = new Writer(new File(PAINT_FILE));
@@ -68,6 +72,8 @@ public class ToolPanel extends JPanel {
         }
     }
 
+    //EFFECTS: reloads the canvas from its JSON Object back into a list of strokes just that it can be
+    //                  loaded back onto the canvas
     public void loadCanvas() {
         List<List<Object>> listOfStrokes = new ArrayList<>();
         try {

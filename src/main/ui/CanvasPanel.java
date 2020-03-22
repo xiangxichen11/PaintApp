@@ -12,10 +12,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.Serializable;
 import java.util.*;
 import java.util.List;
 
+// A panel that allows the user to draw on and stores data into the bitmap
 public class CanvasPanel extends JPanel {
     public static Canvas canvas;
     // inner list: index 0 is color, index 1 is int[] x points, index 2 is int[] y points
@@ -28,7 +28,7 @@ public class CanvasPanel extends JPanel {
         addMouseListener(new MouseClickListener());
         addMouseMotionListener(new MouseMotionListener());
     }
-
+    //EFFECTS: exports the list of strokes into a JSONObject and returns it into a JSONString
     public static String export() {
         JSONObject object = new JSONObject();
         JSONArray strokesXD = new JSONArray();
@@ -53,6 +53,7 @@ public class CanvasPanel extends JPanel {
 
 
     @Override
+    //EFFECTS: implements graphics and allows draws strokes onto the panel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -65,7 +66,9 @@ public class CanvasPanel extends JPanel {
         }
     }
 
+    // class that enables use of mouse clicking
     private class MouseClickListener extends MouseAdapter {
+        //EFFECTS: creates new objects representing color, xpoints and ypoints each time the mouse is pressed
         public void mousePressed(MouseEvent e) {
             if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
                 strokes.add(new ArrayList<>());
@@ -81,7 +84,9 @@ public class CanvasPanel extends JPanel {
         }
     }
 
+    // class that enables use of mouse dragging
     private class MouseMotionListener extends MouseMotionAdapter {
+        //EFFECTS: saves value onto bitmap when mouse is dragged and allows the user to draw different strokes
         public void mouseDragged(MouseEvent e) {
             if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
                 canvas.getBitmap()[e.getX()][e.getY()] = new Pixel(Color.black);

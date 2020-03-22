@@ -1,10 +1,6 @@
 package ui.tools;
+
 // An abstract class that contains the main methods for all tools that will eventually be implemented.
-
-import ui.ToolPanel;
-
-import javax.swing.*;
-
 public abstract class Tool {
     public String description;
     private boolean toolActive;
