@@ -76,11 +76,9 @@ public class ToolPanel extends JPanel {
             for (Object stroke : strokes) {
                 JSONObject castedStroke = (JSONObject) stroke;
                 int[] xpointsXD = new int[((JSONArray) castedStroke.get("xpoints")).size()];
+                int[] ypointsXD = new int[((JSONArray) castedStroke.get("ypoints")).size()];
                 for (int i = 0; i < ((JSONArray) castedStroke.get("xpoints")).size(); i++) {
                     xpointsXD[i] = ((Long) ((JSONArray) castedStroke.get("xpoints")).get(i)).intValue();
-                }
-                int[] ypointsXD = new int[((JSONArray) castedStroke.get("ypoints")).size()];
-                for (int i = 0; i < ((JSONArray) castedStroke.get("ypoints")).size(); i++) {
                     ypointsXD[i] = ((Long) ((JSONArray) castedStroke.get("ypoints")).get(i)).intValue();
                 }
                 listOfStrokes.add(new ArrayList<>());
@@ -91,6 +89,7 @@ public class ToolPanel extends JPanel {
             CanvasPanel.strokes = listOfStrokes;
             Frame.getInstance().canvas.repaint();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
