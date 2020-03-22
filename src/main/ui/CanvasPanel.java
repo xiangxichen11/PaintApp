@@ -28,6 +28,7 @@ public class CanvasPanel extends JPanel {
         addMouseListener(new MouseClickListener());
         addMouseMotionListener(new MouseMotionListener());
     }
+
     //EFFECTS: exports the list of strokes into a JSONObject and returns it into a JSONString
     public static String export() {
         JSONObject object = new JSONObject();
@@ -61,7 +62,7 @@ public class CanvasPanel extends JPanel {
         g2.setStroke(new BasicStroke(6));
 
         for (List<Object> stroke : strokes) {
-            g2.setColor((Color)stroke.get(0));
+            g2.setColor((Color) stroke.get(0));
             g2.drawPolyline(((int[]) stroke.get(1)), ((int[]) stroke.get(2)), ((int[]) stroke.get(1)).length);
         }
     }
