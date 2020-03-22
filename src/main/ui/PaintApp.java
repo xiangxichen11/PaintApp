@@ -12,9 +12,8 @@ import java.awt.*;
 public class PaintApp {
 
     public static void main(String[] args) {
-        Frame frame = new Frame();
-        frame.setVisible(true);
-        frame.setPreferredSize(new Dimension(600, 600));
+        Frame.getInstance().setVisible(true);
+        Frame.getInstance().setPreferredSize(new Dimension(600, 600));
 
 
     }

@@ -6,19 +6,29 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Frame extends JFrame {
+    private static Frame frame;
+    protected ToolPanel tools;
+    protected CanvasPanel canvas;
 
-    public Frame() {
-        setLayout(new BorderLayout());
-        setSize(new Dimension(600, 600));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    private Frame() {
+    }
 
-        ToolPanel tools = new ToolPanel();
-        CanvasPanel canvas = new CanvasPanel(tools);
-        canvas.setBackground(Color.white);
-        add(tools, BorderLayout.NORTH);
-        add(canvas, BorderLayout.CENTER);
+    public static Frame getInstance() {
+        if (frame == null) {
+            frame = new Frame();
+            frame.setLayout(new BorderLayout());
+            frame.setSize(new Dimension(600, 600));
+            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        setVisible(true);
+            frame.tools = new ToolPanel();
+            frame.canvas = new CanvasPanel();
+            frame.canvas.setBackground(Color.white);
+            frame.add(frame.tools, BorderLayout.NORTH);
+            frame.add(frame.canvas, BorderLayout.CENTER);
+
+            frame.setVisible(true);
+        }
+        return frame;
     }
 
 }

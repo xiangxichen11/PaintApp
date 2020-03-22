@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 public class App {
     private static final String PAINT_FILE = "./data/bigDaddy.JSON";
+    private static final String TEST_FILE = "./data/test.JSON";
     private Scanner input;
     private Canvas canvas;
 
@@ -167,8 +168,8 @@ public class App {
         int xpos = input.nextInt();
         System.out.println("Enter y coordinate value: ");
         int ypos = input.nextInt();
-
-        canvas.draw(pencil, xpos, ypos);
+        canvas.getBitmap()[xpos][ypos] = new Pixel(Color.blue);
+        System.out.println(canvas.getBitmap()[xpos][ypos].getPixelColor());
     }
 
     //EFFECTS: saves the account to file

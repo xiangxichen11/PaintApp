@@ -2,6 +2,8 @@ package ui;
 
 import model.Canvas;
 import model.Pixel;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import ui.tools.EraserTool;
 import ui.tools.PencilTool;
 
@@ -10,17 +12,16 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.Serializable;
 import java.util.*;
 import java.util.List;
 
 public class CanvasPanel extends JPanel {
-    private ToolPanel tools;
-    public Canvas canvas;
+    public static Canvas canvas;
     // inner list: index 0 is color, index 1 is int[] x points, index 2 is int[] y points
-    private List<List<Object>> strokes;
+    public static List<List<Object>> strokes;
 
-    public CanvasPanel(ToolPanel tools) {
-        this.tools = tools;
+    public CanvasPanel() {
         canvas = new Canvas();
         strokes = new ArrayList<>();
 
@@ -28,12 +29,35 @@ public class CanvasPanel extends JPanel {
         addMouseMotionListener(new MouseMotionListener());
     }
 
+    public static String export() {
+        JSONObject object = new JSONObject();
+        JSONArray strokesXD = new JSONArray();
+        for (List<Object> stroke : strokes) {
+            JSONObject singleStroke = new JSONObject(); // everything in one stroke
+            singleStroke.put("color", ((Color) stroke.get(0)).getRGB());
+            JSONArray xpoints = new JSONArray();        // array for x
+            for (int i = 0; i < ((int[]) stroke.get(1)).length; i++) {
+                xpoints.add(((int[]) stroke.get(1))[i]);
+            }
+            singleStroke.put("xpoints", xpoints);
+            JSONArray ypoints = new JSONArray();        // array for y
+            for (int i = 0; i < ((int[]) stroke.get(2)).length; i++) {
+                ypoints.add(((int[]) stroke.get(2))[i]);
+            }
+            singleStroke.put("ypoints", ypoints);
+            strokesXD.add(singleStroke);
+        }
+        object.put("strokes", strokesXD);
+        return object.toJSONString();
+    }
+
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setStroke(new BasicStroke(6));
+        g2.setStroke(new BasicStroke(80));
 
         for (List<Object> stroke : strokes) {
             g2.setColor((Color) stroke.get(0));
@@ -43,14 +67,14 @@ public class CanvasPanel extends JPanel {
 
     private class MouseClickListener extends MouseAdapter {
         public void mousePressed(MouseEvent e) {
-            if (tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
+            if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
                 strokes.add(new ArrayList<>());
                 strokes.get(strokes.size() - 1).add(Color.black);
                 strokes.get(strokes.size() - 1).add(new int[0]);     // x points
                 strokes.get(strokes.size() - 1).add(new int[0]);     // y points
-            } else if (tools.activeTool.getClass().isAssignableFrom(EraserTool.class)) {
+            } else if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(EraserTool.class)) {
                 strokes.add(new ArrayList<>());
-                strokes.get(strokes.size() - 1).add(Color.blue);
+                strokes.get(strokes.size() - 1).add(Color.white);
                 strokes.get(strokes.size() - 1).add(new int[0]);
                 strokes.get(strokes.size() - 1).add(new int[0]);
             }
@@ -59,9 +83,9 @@ public class CanvasPanel extends JPanel {
 
     private class MouseMotionListener extends MouseMotionAdapter {
         public void mouseDragged(MouseEvent e) {
-            if (tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
+            if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
                 canvas.getBitmap()[e.getX()][e.getY()] = new Pixel(Color.black);
-            } else if (tools.activeTool.getClass().isAssignableFrom(EraserTool.class)) {
+            } else if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(EraserTool.class)) {
                 canvas.getBitmap()[e.getX()][e.getY()] = new Pixel(Color.white);
             }
 
