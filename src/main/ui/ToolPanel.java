@@ -82,9 +82,10 @@ public class ToolPanel extends JPanel {
                     ypointsXD[i] = ((Long) ((JSONArray) castedStroke.get("ypoints")).get(i)).intValue();
                 }
                 listOfStrokes.add(new ArrayList<>());
-                listOfStrokes.get(strokes.size() - 1).add(new Color(((Long) castedStroke.get("color")).intValue()));
-                listOfStrokes.get(strokes.size() - 1).add(xpointsXD);
-                listOfStrokes.get(strokes.size() - 1).add(ypointsXD);
+                listOfStrokes.get(listOfStrokes.size() - 1).add(
+                        new Color(((Long) castedStroke.get("color")).intValue()));
+                listOfStrokes.get(listOfStrokes.size() - 1).add(xpointsXD);
+                listOfStrokes.get(listOfStrokes.size() - 1).add(ypointsXD);
             }
             CanvasPanel.strokes = listOfStrokes;
             Frame.getInstance().canvas.repaint();

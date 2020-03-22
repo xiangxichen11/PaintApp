@@ -57,10 +57,10 @@ public class CanvasPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setStroke(new BasicStroke(80));
+        g2.setStroke(new BasicStroke(6));
 
         for (List<Object> stroke : strokes) {
-            g2.setColor((Color) stroke.get(0));
+            g2.setColor((Color)stroke.get(0));
             g2.drawPolyline(((int[]) stroke.get(1)), ((int[]) stroke.get(2)), ((int[]) stroke.get(1)).length);
         }
     }
