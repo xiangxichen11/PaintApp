@@ -7,7 +7,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+// Class that tests the Tool Classes
 public class ToolTest {
     PencilTool pencil;
     EraserTool eraser;

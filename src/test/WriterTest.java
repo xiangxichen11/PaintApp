@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+// Class that tests the Writer Class
 public class WriterTest {
     private static final String TEST_FILE = "./data/bigDaddy.JSON";
     Writer writer;
@@ -26,7 +26,7 @@ public class WriterTest {
 
     @Test
     void testWrite() throws IOException {
-        writer.write(canvas.export());
+        writer.write(canvas.exportConsole());
         writer.closeWriter();
 
         try {

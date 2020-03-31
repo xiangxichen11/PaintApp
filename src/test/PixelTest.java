@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+// Class that tests the Pixel Class
 public class PixelTest {
     Pixel pixel;
 

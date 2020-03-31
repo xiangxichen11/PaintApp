@@ -174,7 +174,7 @@ public class ConsoleApp {
     public void savePaint() {
         try {
             Writer writer = new Writer(new File(PAINT_FILE));
-            writer.write(canvas.export());
+            writer.write(canvas.exportConsole());
             writer.closeWriter();
             System.out.println("Accounts saved to file " + PAINT_FILE);
         } catch (IOException e) {

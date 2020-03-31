@@ -9,7 +9,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+// Class that tests the Canvas Class
 public class CanvasTest {
     Canvas canvas;
     Tool pencil;
@@ -64,10 +64,10 @@ public class CanvasTest {
     @Test
     void testExport(){
         Canvas canvas2 = new Canvas();
-        canvas2.export().toString();
-        canvas.export().toString();
+        canvas2.exportConsole().toString();
+        canvas.exportConsole().toString();
 
-        assertEquals(canvas2.export().toString(), canvas.export().toString());
+        assertEquals(canvas2.exportConsole().toString(), canvas.exportConsole().toString());
     }
 
 }

@@ -28,5 +28,4 @@ public class PencilTool extends Tool {
     public int getSize() {
         return size;
     }
-
 }

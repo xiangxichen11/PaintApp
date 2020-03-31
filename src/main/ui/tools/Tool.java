@@ -1,5 +1,7 @@
 package ui.tools;
 
+import ui.ToolPanel;
+
 // An abstract class that contains the main methods for all tools that will eventually be implemented.
 public abstract class Tool {
     public String description;
@@ -26,6 +28,7 @@ public abstract class Tool {
     protected abstract void setSize(int size);
 
     protected abstract int getSize();
+
 }
 
 

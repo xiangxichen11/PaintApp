@@ -51,6 +51,30 @@ When you want to save the drawing, click the save button and it will be saved to
 This load button will always reload the previous save. Just click the load button and whatever was previously saved 
 will appear on the screen. Any non-saved changed will be gone.
 
+##  Phase 4: Task 2
+In my project, I have chosen to implement a type hierarchy for my tools. In this type hierarchy, I have an abstract
+class called tools that contains methods general such as whether the tool is active or not. Additionally, I have
+abstract methods, getSize() and setSize() that are implemented in my pencil too and eraser tool classes. These
+two methods are specific for each tool and can be different from each other. Furthermore, I have a String field
+called description that indicates the name of each tool. This field is public and is declared in the sub-tool 
+classes of the abstract class. 
+
+##Phase 4: Task 3
+Places in which there are is too much coupling or poor cohesion are:
+1. Poor Cohesion in ToolPanel SaveCanvas(), LoadCanvas() methods.
+- These two methods supply the action component for the buttons in my ToolPanel class. However I realized they have
+more to do with data that ui so I decided to move them into my Canvas class. The Canvas class deals with my data for
+the application which is a better fit for these methods. Thus, this improves on cohesion as the the methods are
+properly separated into their specified classes.
+
+2. Poor Cohesion in CanvasPanel export() method:
+- Similar to the first issue, this method also deals with data rather than ui. In this case, the export method turns
+the canvas into a JSONObject such that it can be stored. Thus, I moved this into the Canvas class as well to reduce
+cohesion. I also renamed this method to exportApp() as I have a previous method that exported the canvas for my
+console application.
+
+
+
 
 
 

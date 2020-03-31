@@ -17,7 +17,7 @@ import java.util.List;
 
 // A panel that allows the user to draw on and stores data into the bitmap
 public class CanvasPanel extends JPanel {
-    public static Canvas canvas;
+    private Canvas canvas;
     // inner list: index 0 is color, index 1 is int[] x points, index 2 is int[] y points
     public static List<List<Object>> strokes;
 
@@ -28,30 +28,6 @@ public class CanvasPanel extends JPanel {
         addMouseListener(new MouseClickListener());
         addMouseMotionListener(new MouseMotionListener());
     }
-
-    //EFFECTS: exports the list of strokes into a JSONObject and returns it into a JSONString
-    public static String export() {
-        JSONObject object = new JSONObject();
-        JSONArray strokesXD = new JSONArray();
-        for (List<Object> stroke : strokes) {
-            JSONObject singleStroke = new JSONObject(); // everything in one stroke
-            singleStroke.put("color", ((Color) stroke.get(0)).getRGB());
-            JSONArray xpoints = new JSONArray();        // array for x
-            for (int i = 0; i < ((int[]) stroke.get(1)).length; i++) {
-                xpoints.add(((int[]) stroke.get(1))[i]);
-            }
-            singleStroke.put("xpoints", xpoints);
-            JSONArray ypoints = new JSONArray();        // array for y
-            for (int i = 0; i < ((int[]) stroke.get(2)).length; i++) {
-                ypoints.add(((int[]) stroke.get(2))[i]);
-            }
-            singleStroke.put("ypoints", ypoints);
-            strokesXD.add(singleStroke);
-        }
-        object.put("strokes", strokesXD);
-        return object.toJSONString();
-    }
-
 
     @Override
     //EFFECTS: implements graphics and allows draws strokes onto the panel
@@ -74,14 +50,12 @@ public class CanvasPanel extends JPanel {
             if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(PencilTool.class)) {
                 strokes.add(new ArrayList<>());
                 strokes.get(strokes.size() - 1).add(Color.black);
-                strokes.get(strokes.size() - 1).add(new int[0]);     // x points
-                strokes.get(strokes.size() - 1).add(new int[0]);     // y points
             } else if (Frame.getInstance().tools.activeTool.getClass().isAssignableFrom(EraserTool.class)) {
                 strokes.add(new ArrayList<>());
                 strokes.get(strokes.size() - 1).add(Color.white);
-                strokes.get(strokes.size() - 1).add(new int[0]);
-                strokes.get(strokes.size() - 1).add(new int[0]);
             }
+            strokes.get(strokes.size() - 1).add(new int[0]);     // x points
+            strokes.get(strokes.size() - 1).add(new int[0]);     // y points
         }
     }
 

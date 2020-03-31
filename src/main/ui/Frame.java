@@ -7,7 +7,7 @@ import java.awt.*;
 public class Frame extends JFrame {
     private static Frame frame;
     protected ToolPanel tools;
-    protected CanvasPanel canvas;
+    public CanvasPanel canvas;
 
     private Frame() {
     }

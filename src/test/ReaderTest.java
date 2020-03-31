@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+// Class that tests the Reader Class
 public class ReaderTest {
     private static final String TEST_FILE = "./data/bigDaddy.JSON";
     private Canvas canvas;
