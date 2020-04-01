@@ -69,7 +69,7 @@ properly separated into their specified classes.
 
 2. Poor Cohesion in CanvasPanel export() method:
 - Similar to the first issue, this method also deals with data rather than ui. In this case, the export method turns
-the canvas into a JSONObject such that it can be stored. Thus, I moved this into the Canvas class as well to reduce
+the canvas into a JSONObject such that it can be stored. Thus, I moved this into the Canvas class as well to improve
 cohesion. I also renamed this method to exportApp() as I have a previous method that exported the canvas for my
 console application.
 
