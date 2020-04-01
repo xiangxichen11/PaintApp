@@ -23,55 +23,43 @@ public class CanvasTest {
         eraser = new EraserTool();
 
     }
+
     @Test
-    void testConstructor(){
-        assertEquals(Color.white, canvas.getPixel(0,0).getPixelColor());
-        assertEquals(Color.white, canvas.getPixel(2,2).getPixelColor());
+    void testConstructor() {
+        assertEquals(Color.white, canvas.getPixel(0, 0).getPixelColor());
+        assertEquals(Color.white, canvas.getPixel(2, 2).getPixelColor());
     }
 
 
     @Test
-    void testPencilDraw(){
+    void testPencilDraw() {
         canvas.draw(pencil, 10, 10);
         assertEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
-        canvas.draw(eraser,10,10);
-        assertEquals(Color.white, canvas.getPixel(10,10).getPixelColor());
+        canvas.draw(eraser, 10, 10);
+        assertEquals(Color.white, canvas.getPixel(10, 10).getPixelColor());
     }
 
     @Test
-    void testEraserDraw(){
+    void testEraserDraw() {
         assertNotEquals("pencil", eraser.description);
         assertNotEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
         assertEquals("eraser", eraser.description);
         canvas.draw(eraser, 10, 10);
-        assertEquals(Color.white,  canvas.getPixel(10, 10).getPixelColor());
+        assertEquals(Color.white, canvas.getPixel(10, 10).getPixelColor());
     }
 
     @Test
-    void testDrawNotPencilOrEraser(){
+    void testDrawNotPencilOrEraser() {
         eraser.description = "pen";
         canvas.draw(eraser, 10, 10);
         assertNotEquals(Color.black, canvas.getPixel(10, 10).getPixelColor());
     }
 
     @Test
-    void testGetBitmap(){
+    void testGetBitmap() {
         canvas.getBitmap()[0][0].setColor(Color.blue);
 
         assertEquals(Color.blue, canvas.getBitmap()[0][0].getPixelColor());
     }
-
-    @Test
-    void testExport(){
-        Canvas canvas2 = new Canvas();
-        canvas2.exportConsole().toString();
-        canvas.exportConsole().toString();
-
-        assertEquals(canvas2.exportConsole().toString(), canvas.exportConsole().toString());
-    }
-
 }
-
-
-
 

@@ -68,7 +68,7 @@ public class Canvas {
     }
 
     //EFFECTS: exports the list of strokes into a JSONObject and returns it into a JSONString
-    public static String exportApp() {
+    public String exportApp() {
         JSONObject object = new JSONObject();
         JSONArray jsonStrokes = new JSONArray();
         for (List<Object> stroke : CanvasPanel.strokes) {
