@@ -59,7 +59,7 @@ two methods are specific for each tool and can be different from each other. Fur
 called description that indicates the name of each tool. This field is public and is declared in the sub-tool 
 classes of the abstract class. 
 
-##Phase 4: Task 3
+##  Phase 4: Task 3
 Places in which there are is too much coupling or poor cohesion are:
 1. Poor Cohesion in ToolPanel SaveCanvas(), LoadCanvas() methods.
 - These two methods supply the action component for the buttons in my ToolPanel class. However I realized they have
