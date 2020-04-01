@@ -61,5 +61,15 @@ public class CanvasTest {
 
         assertEquals(Color.blue, canvas.getBitmap()[0][0].getPixelColor());
     }
+
+//    @Test
+//    void testSaveAndLoad(){
+//        canvas.loadCanvas();
+//    }
 }
+
+
+
+
+
 
